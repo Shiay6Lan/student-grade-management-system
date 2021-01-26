@@ -1,42 +1,65 @@
-#include<stdio.h>
+#include"all.h"
+struct NODE* listhead = NULL;
 void menu()
 {
-	printf("************************¡¾Ñ§Éú¹ÜÀíÏµÍ³¡¿************************\n");
-	printf("*\t\t  0.¡¾·µ»ØÉÏÒ»¼¶²Ëµ¥(ÍË³ö)¡¿\t\t       *\n");
-	printf("*\t\t  1.¡¾   °´Ñ§ÉúĞÕÃûÅÅĞò   ¡¿\t\t       *\n");
-	printf("*\t\t  2.¡¾ °´Ñ§ÉúÆ½¾ù³É¼¨ÅÅĞò ¡¿\t\t       *\n");
-	printf("*\t\t  3.¡¾   °´Ñ§Ôº²éÕÒÑ§Éú   ¡¿\t\t       *\n");
-	printf("*\t\t  4.¡¾  Ìí¼ÓÑ§Éú¼°ÆäĞÅÏ¢  ¡¿\t\t       *\n");
-	printf("*\t\t  5.¡¾  ĞŞ¸ÄÑ§Éú³É¼¨ĞÅÏ¢  ¡¿\t\t       *\n");
-	printf("*\t\t  6.¡¾   °´ĞÕÃû²éÕÒÑ§Éú   ¡¿\t\t       *\n");
-	printf("*\t\t  7.¡¾    É¾³ıÑ§ÉúĞÅÏ¢    ¡¿\t\t       *\n");
-	printf("*\t\t  8.¡¾    ĞŞ¸ÄÏµÍ³ÃÜÂë    ¡¿\t\t       *\n");
-	printf("*\t\t  9.¡¾  ²éÕÒ¹Ò¿ÆÑ§ÉúĞÅÏ¢  ¡¿\t\t       *\n");
+	printf("************************ã€å­¦ç”Ÿç®¡ç†ç³»ç»Ÿã€‘************************\n");
+	printf("*\t\t  0.ã€è¿”å›ä¸Šä¸€çº§èœå•(é€€å‡º)ã€‘\t\t       *\n");
+	printf("*\t\t  1.ã€   æŒ‰å­¦ç”Ÿå§“åæ’åº   ã€‘\t\t       *\n");
+	printf("*\t\t  2.ã€ æŒ‰å­¦ç”Ÿå¹³å‡æˆç»©æ’åº ã€‘\t\t       *\n");
+	printf("*\t\t  3.ã€   æŒ‰å­¦é™¢æŸ¥æ‰¾å­¦ç”Ÿ   ã€‘\t\t       *\n");
+	printf("*\t\t  4.ã€  æ·»åŠ å­¦ç”ŸåŠå…¶ä¿¡æ¯  ã€‘\t\t       *\n");
+	printf("*\t\t  5.ã€  ä¿®æ”¹å­¦ç”Ÿæˆç»©ä¿¡æ¯  ã€‘\t\t       *\n");
+	printf("*\t\t  6.ã€   æŒ‰å§“åæŸ¥æ‰¾å­¦ç”Ÿ   ã€‘\t\t       *\n");
+	printf("*\t\t  7.ã€    åˆ é™¤å­¦ç”Ÿä¿¡æ¯    ã€‘\t\t       *\n");
+	printf("*\t\t  8.ã€    ä¿®æ”¹ç³»ç»Ÿå¯†ç     ã€‘\t\t       *\n");
+	printf("*\t\t  9.ã€  æŸ¥æ‰¾æŒ‚ç§‘å­¦ç”Ÿä¿¡æ¯  ã€‘\t\t       *\n");
 	printf("****************************************************************\n");
-	printf("ÇëÊäÈë0-9:\n");
+	printf("è¯·è¾“å…¥0-9:\n");
 }
 int key()
 {
 	int down;
+	struct student tempdata;
 	scanf("%d", &down);
 	switch (down)
 	{
 		case 0:
+			break;
 		case 1:
+			break;
 		case 2:
+			break;
 		case 3:
+			break;
 		case 4:
+			printf("\t\t    ã€  æ·»åŠ å­¦ç”ŸåŠå…¶ä¿¡æ¯  ã€‘\n");
+			printf("è¯·è¾“å…¥å­¦ç”Ÿå­¦å·ã€å§“åã€å­¦é™¢ä»£ç ã€æ€§åˆ«ä»£ç (Mä¸ºç”·ï¼ŒFä¸ºå¥³)ã€Cè¯­è¨€æˆç»©ã€æ•°å­¦æˆç»©ã€è‹±è¯­æˆç»©ã€ä½“è‚²æˆç»©:\n");
+			scanf("%s%s%s%c%d%d%d%d", tempdata.num, tempdata.name, tempdata.instnum, &tempdata.sex, &tempdata.score.cscore, &tempdata.score.mscore, &tempdata.score.escore, &tempdata.score.pscore);
+			insertnode(listhead, tempdata);
+			break;
 		case 5:
+			break;
 		case 6:
+			break;
 		case 7:
+			break;
 		case 8:
+			break;
 		case 9:
+			break;
 	}
 }
 int main()
 {
-	menu();
-	key();
+	listhead = creatlist();
+
+	while (1)
+	{
+		menu();
+		key();
+		system("pause");
+		system("cls");
+	}
 
 	return 0;
 }
