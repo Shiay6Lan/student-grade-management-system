@@ -92,6 +92,7 @@ int key()
 			break;
 		case 9:
 			printf("\t\t\t\t\t      【  查找挂科学生信息  】\n");
+			printfailscore(listhead);
 			break;
 	}
 }
