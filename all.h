@@ -108,6 +108,31 @@ void deletenode(struct NODE* headnode, char* num)             //删除结点
 		printf("\t\t\t删除成功！\n");
 	}
 }
+void printfailscore(struct NODE* headnode)              //查找并输出挂科学生信息
+{
+	int key = 0;
+	struct NODE* pmove = headnode->next;
+	if (pmove == NULL) printf("\t\t\t未查找到相关信息！\n");
+	else
+	{
+		while (pmove)
+		{
+			if (pmove->data.score.cscore < 60 || pmove->data.score.escore < 60 || pmove->data.score.mscore < 60 || pmove->data.score.pscore < 60)
+			{
+				printnode(pmove);
+				printf("\t\t\t挂科科目有:");
+				if (pmove->data.score.cscore < 60) printf("C语言 ");
+				if (pmove->data.score.mscore < 60) printf("数学 ");
+				if (pmove->data.score.escore < 60) printf("英语 ");
+				if (pmove->data.score.pscore < 60) printf("体育 ");
+				printf("\n");
+				key = 1;
+			}
+			pmove = pmove->next;
+		}
+		if (key == 0) printf("\t\t\t未查找到挂科学生！\n");
+	}
+}
 void readfile(char* filename, struct NODE* headnode)           //读文件
 {
 	FILE* fp = fopen(filename, "r");
