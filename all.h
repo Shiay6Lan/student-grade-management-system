@@ -54,7 +54,21 @@ void insertnode(struct NODE* headnode, struct student data)       //插入结点
 	node->next = headnode->next;
 	headnode->next = node;
 }
-struct NODE* searchnode(struct NODE* headnode, char* name)      //按名字查找结点
+struct NODE* searchnodebynum(struct NODE* headnode, char* num)      //按学号查找结点
+{
+	struct NODE* pmove = headnode->next;
+	if (pmove == NULL) return pmove;
+	else
+	{
+		while (strcmp(pmove->data.num, num))
+		{
+			pmove = pmove->next;
+			if (pmove == NULL) break;
+		}
+		return pmove;
+	}
+}
+struct NODE* searchnodebyname(struct NODE* headnode, char* name)      //按名字查找结点
 {
 	struct NODE* pmove = headnode->next;
 	if (pmove == NULL) return pmove;
@@ -93,4 +107,27 @@ void deletenode(struct NODE* headnode, char* num)             //删除结点
 		free(posnode);
 		printf("\t\t\t删除成功！\n");
 	}
+}
+void readfile(char* filename, struct NODE* headnode)           //读文件
+{
+	FILE* fp = fopen(filename, "r");
+	if (fp == NULL) fp = fopen(filename, "w");
+	struct student tempdata;
+	while (~fscanf(fp, "%s\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", tempdata.num, tempdata.name, tempdata.instnum, &tempdata.sex, &tempdata.score.cscore, &tempdata.score.mscore, &tempdata.score.escore, &tempdata.score.pscore))
+	{
+		insertnode(headnode, tempdata);
+		memset(&tempdata, 0, sizeof(tempdata));
+	}
+	fclose(fp);
+}
+void savefile(char* filename, struct NODE* headnode)               //存文件
+{
+	FILE* fp = fopen(filename, "w");
+	struct NODE* pmove = headnode->next;
+	while (pmove)
+	{
+		fprintf(fp, "%s\t%s\t%s\t%c\t%d\t%d\t%d\t%d\n", pmove->data.num, pmove->data.name, pmove->data.instnum, pmove->data.sex, pmove->data.score.cscore, pmove->data.score.mscore, pmove->data.score.escore, pmove->data.score.pscore);
+		pmove = pmove->next;
+	}
+	fclose(fp);
 }
