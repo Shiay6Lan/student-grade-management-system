@@ -70,6 +70,8 @@ int key()
 					printf("\t\t\t修改成功！\n");
 					savefile("Stu_Info.txt", listhead);
 					break;
+				default:
+					printf("\t\t\t输入错误，返回菜单！\n");
 				}
 			}
 			break;
@@ -94,6 +96,8 @@ int key()
 			printf("\t\t\t\t\t      【  查找挂科学生信息  】\n");
 			printfailscore(listhead);
 			break;
+		default:
+			printf("\t\t\t输入错误，请重新输入！\n");
 	}
 }
 int main()
